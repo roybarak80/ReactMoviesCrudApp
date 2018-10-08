@@ -49,8 +49,8 @@ export default class MovieOverViewModal extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     {this.props.movieObj.poster_path
-                                        ? (<img className="img-responsive" src={`https://image.tmdb.org/t/p/w500${this.props.movieObj.poster_path}`}/>)
-                                        : (<img className="img-responsive" src={`${this.props.movieObj.img}`}/>)}
+                                        ? (<img alt="" className="img-responsive" src={`https://image.tmdb.org/t/p/w500${this.props.movieObj.poster_path}`}/>)
+                                        : (<img alt="" className="img-responsive" src={`${this.props.movieObj.img}`}/>)}
                                 </div>
                                 <div className="col-md-6">
                                     <p className="movie-title">{this.props.movieObj.title}</p>

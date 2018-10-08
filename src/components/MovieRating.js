@@ -4,7 +4,7 @@ export default class MovieRating extends Component {
 
     roundAvarege(prmAverage) {
         var currAvarege = Math.ceil(prmAverage);
-        var currAvarege = 10 - currAvarege;
+        currAvarege = 10 - currAvarege;
         return currAvarege.toString();
     }
     render() {

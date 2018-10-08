@@ -42,8 +42,8 @@ class AllMovies extends Component {
                             <div className="panel-heading">
                                 <div className="moviePosterCard">
                                     {movieItem.poster_path
-                                        ? (<img src={`https://image.tmdb.org/t/p/w500${movieItem.poster_path}`}/>)
-                                        : (<img src={`${movieItem.img}`}/>)}
+                                        ? (<img alt="" src={`https://image.tmdb.org/t/p/w500${movieItem.poster_path}`}/>)
+                                        : (<img alt="" src={`${movieItem.img}`}/>)}
                                 </div>
                                 <div className="movieInfoCard">
                                     <div className="movie-info-card-wrapper">
