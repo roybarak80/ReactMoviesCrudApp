@@ -6,13 +6,29 @@ import EditMovieModal from './EditMovieModal';
 import MovieRating from './MovieRating';
 import Moment from 'moment';
 import MovieOverViewModal from './MovieOverViewModal';
+import MovieGenres from './MovieGenres';
+
 
 class AllMovies extends Component {
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          genres: [],
+        };
+      }
+
+
     componentWillMount() {
-        this
-            .props
-            .fetchMovies();
+        
+        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=82e0e5a56b04994581c0700e5d' +
+        '61a2e5')
+        .then(response => response.json())
+        .then(genres => this.setState({ genres }));
+      
+        this.props.fetchMovies();
+       
     }
     componentWillReceiveProps(nextProps) {
 
@@ -25,12 +41,23 @@ class AllMovies extends Component {
     }
     formatDate(movieDate) {
 
-        var movieFormatedDate = Moment(movieDate.toString()).format('DD-MM-YYYY');
+        var movieFormatedDate = '';
+        if (!!movieDate) {
+            movieFormatedDate = Moment(movieDate.toString()).format('DD-MM-YYYY');
+
+        } else {
+
+            var newMoovieDate = new Date();
+            movieFormatedDate = Moment(newMoovieDate.toString()).format('DD-MM-YYYY');
+
+        }
 
         return movieFormatedDate;
     }
-    render() {
 
+
+    render() {
+        
         const movieItems = this
             .props
             .movies
@@ -56,6 +83,13 @@ class AllMovies extends Component {
                                             <span className="italic-title">
                                                 {movieItem.vote_count}&nbsp; Fan Ratings</span>
                                             <MovieRating currAverage={movieItem.vote_average}/>
+                                        </div>
+                                        <div className="movie-genres">
+                                        <span className="italic-title">
+                                               Movie Genres</span>
+                                         <MovieGenres moviesGenresIds={movieItem.genre_ids} genresFromApi={this.state.genres}  />
+                                           
+                                           
                                         </div>
 
                                     </div>
@@ -101,8 +135,11 @@ class AllMovies extends Component {
 
 AllMovies.propTypes = {
     fetchMovies: propTypes.func.isRequired,
+   
     movies: propTypes.array.isRequired,
+   
     // newPost: propTypes.object
 }
-const mapStateToProps = state => ({movies: state.movies.items, newMovie: state.movies.item, editedMovie: state.movies.item})
+const mapStateToProps = state => ({genres: state.genres, movies: state.movies.items, newMovie: state.movies.item, editedMovie: state.movies.item})
+
 export default connect(mapStateToProps, {fetchMovies})(AllMovies);

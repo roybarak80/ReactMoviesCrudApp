@@ -3,8 +3,8 @@ import {FETCH_MOVIES, UPDATE_MOVIE, NEW_MOVIE} from '../actions/types';
 const initialState = {
 
     items: [],
-    item: {}
-
+    item: {},
+    
 }
 
 export default function (state = initialState, action) {

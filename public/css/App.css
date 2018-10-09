@@ -41,7 +41,8 @@ height: auto;
 .italic-title{
     font-style: italic;
     color: #eaeaea;
-    
+    display: inline-block;
+    margin-bottom: 5px;
 
 }
 .movie-release-date{
@@ -58,12 +59,12 @@ height: auto;
 }
 .movieInfoCard{
     float: right;
-    padding: 10px 15px;
+    padding: 20px 15px;
 }
 
 .movie-title{
     font-family: 'Abel';
-    font-size: 1.6em;
+    font-size: 1.3em;
     font-weight: 600;
 }
 .movie-overview{
@@ -74,6 +75,10 @@ height: auto;
 /* .edit-movie-btn{
     padding: 6px 0 6px 0;
 } */
+
+.movie-rating{
+margin-bottom: 15px;
+}
 .read-more-btn{
     position: absolute;
     right: 8px;
@@ -81,8 +86,10 @@ height: auto;
     background-color: white;
     padding: 5px 10px;
 }
-.read-more-btn:hover{
+.read-more-btn:hover,.read-more-btn:focus, .read-more-btn:active{
     background-color: white;
+    border: none;
+    outline: none;
 }
 .ratingStar{
     color:#ffa500;
@@ -111,17 +118,26 @@ height: auto;
   }
 .panel-heading{
     padding: 0;
-    
+    overflow: hidden;
+}
+
+.panel-heading{
+    padding: 0;
     overflow: hidden;
 }
 .panel-primary > .panel-heading {
     background-color: #0b2a44;
 }
 
+.panel-body {
+    min-height: 118px;
+}
+
 /* Movie overview modal  */
 
-.movie-overview-title{
-
+.curr-genre{
+    color: orange;
+    font-size: 0.9em;
 }
 /* @media only screen and (max-width: 1000px) {
     .movie-card-item{
