@@ -59,8 +59,7 @@ class NewMovieForm extends Component {
             .addNewMovie(newMovie);
     }
     render() {
-        console.log(store
-            .getState())
+        
         return (
             <div>
 
